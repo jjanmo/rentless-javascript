@@ -34,7 +34,7 @@ const jjanmo = {
 console.log(jjanmo.age);
 jjanmo.addAge();
 jjanmo.addAge();
-console.log(jjanmo.age); // 예상값 : 27 | 결과값 : 25 ??
+console.log(jjanmo.age); // expected : 27 | result : 25 ??
 
 /*
 addAge안에서 this는 jjanmo. ~~ 로 호출되기때문에 this는 jjanmo가 되어야한다고 생각할 수 있다.
@@ -48,12 +48,3 @@ addAge() {
   this.age++;
 }
 */
-
-// default value
-
-const DEFAULT = 'anonymous';
-
-const greeting = (name = DEFAULT) => `Hello World ${name}`;
-
-console.log(greeting());
-console.log(greeting('jjanmo'));
