@@ -1,6 +1,10 @@
 # My JS Code Snippets
 
-> Let's collect the good example codes that came out while learning JavaScript.
+> Let's collect the a good codes for studying that came out while learning JavaScript.
+
+- 좋은 블로그 글 번역
+
+- 코드로 정리하는 자바스크립트 개념 + 문서로 정리
 
 <details>
   <summary>References</summary>
