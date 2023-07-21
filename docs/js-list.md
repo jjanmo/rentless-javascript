@@ -7,3 +7,4 @@
 |  3  | 23.06.02  |     -     |   Doing   |   Javascript Trick Part1    |       [✔️](/javascript/3_js-tricks-part1.md)       |
 |  4  | 23.06.16  |     -     |   To Do   |   Javascript Set Operator   |       [✔️](/javascript/4_js-set-operator.md)       |
 |  5  | 23.06.12  |     -     |   Doing   |    CleanCode Javascript     |    [✔️](/javascript/5_cleancode-javascript.md)     |
+|  6  | 23.07.21  |     -     |     -     |    Promise.allSettled()     |                         -                          |
