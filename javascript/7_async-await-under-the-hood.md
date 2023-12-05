@@ -2,6 +2,10 @@
 
 ## 배경
 
+> 궁금증을 갖게 된 배경?
+
+### 첫번째
+
 ```js
 const BASE_URL = 'https://jsonplaceholder.typicode.com/posts';
 
@@ -21,12 +25,32 @@ const BASE_URL = 'https://jsonplaceholder.typicode.com/posts';
 
 ![output](/screenshots/7-1.png)
 
-그렇다면 await가 없다면 어떤 값이 노출될까? 결과적으로 에러가 나타난다. 그 이유는 fetch로 받은 리턴값(response)이 await가 있을 때와는 다르게 `Promise<Response>`이기 때문이다. 그래서 response는 프로미스 객체이기에, json() 이라는 메소드가 없기때문에 에러가 난다. 즉, await가 없는 경우에는 프로미스 객체를 리턴하게 되는 것을 알게 되었다. 또 json() 메소드 역시 프로미스 객체를 리턴하는 메소드인데 await가 있는 코드(정상작동하는 코드)에서 result는 결과값을 확인할 수 있었다.
+### 두번째
 
-나는 도대체 await가 내부적으로 무슨 일을 하길래 프로미스 객체를 우리가 벗겨주는(?) 것인지 궁금해졌다. 그래서 async/await의 내부 구조에 대해서 살펴보고자한다.
+fetch나 response.json()앞에 await가 없다면??
 
-##
+- fetch() 앞 await 제거
 
-https://dev.to/gafi/7-reasons-to-always-use-async-await-over-plain-promises-tutorial-4ej9
+  결과적으로 `TypeError: response.json is not a function` 라는 에러가 발생한다. 그 이유는 response의 값이 프로미스 객체(`Promise<Response>`) 이기 때문이다. 즉 프로미스 객체에는 json()이라는 메소드가 없어서 위와 같은 에러가 발생한다.
+
+- response.json() 제거
+
+  에러는 나지 않지만, 역시나 result의 값이 프로미스 객체가 된다.
+
+fetch()나 json() 메소드에 대한 타이핑을 찾아보면 모두 프로미스 객체를 리턴하는 것으로 나온다. 그런데 위 결과를 await을 붙이게되면 그 프로미스 객체를 벗겨지면서 우리가 원하는 값을 얻을 수 있는 상태가 된다. await 라는 키워드가 도대체 어떤 작동을 하는 것일까?
+
+### 세번째
+
+await을 사용하면 마치(?) 동기적으로 작동한다. 비동기적인 fetch 함수에 대한 값을 기달렸다가 해당 값을 받고 다음으로 넘어가게 된다. 어떻게 await 하나만으로 이런 식의 코드 흐름을 가질수 있을까?
+
+이러한 궁금증에서 부터 시작하여 async-await가 도대체 어떻게 생겨먹은 것인지 알아보고자 한다.
+
+## async-await의 내부구현
 
 https://medium.com/siliconwat/how-javascript-async-await-works-3cab4b7d21da
+
+https://yeoulcoding.me/213
+
+https://developer.mozilla.org/ko/docs/Learn/JavaScript/Asynchronous/Introducing
+
+## 메모리적인 관점에서의 async-await의 동작
