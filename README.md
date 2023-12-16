@@ -34,3 +34,4 @@
 ## Lists
 
 - [Javascript](/docs/js-list.md)
+- [Typscript](/docs/ts-list.md)
